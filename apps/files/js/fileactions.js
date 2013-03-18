@@ -92,7 +92,7 @@ var FileActions = {
 				if (img.call) {
 					img = img(file);
 				}
-				var html = '<a href="#" class="action" data-action="' + name + '">';
+				var html = '<a href="#" class="action" data-action="' + name + '" original-title="' + name + '">';
 				if (img) {
 					html += '<img class ="svg" src="' + img + '" /> ';
 				}
