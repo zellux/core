@@ -95,7 +95,7 @@ var FileActions = {
 				if (img) {
 					html += '<img class ="svg" src="' + img + '" /> ';
 				}
-
+                                
 				var element = $(html);
 				element.data('action', name);
 				//alert(element);
@@ -110,7 +110,8 @@ var FileActions = {
                                     parent.parent().children().find('span.modified').append(element);
                                 }
                                 else if (name === 'Share') {
-                                    parent.parent().find('a.name').append(element);
+                                    parent.parent().find('a.name').append('<span class="share-icon" />');
+                                    parent.parent().find('a.name>span.share-icon').append(element);
                                 }
 			}
 
