@@ -96,7 +96,6 @@ var FileActions = {
 				if (img) {
 					html += '<img class ="svg" src="' + img + '" /> ';
 				}
-				html += t('files', name) + '</a>';
 
 				var element = $(html);
 				element.data('action', name);
