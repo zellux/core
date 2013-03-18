@@ -104,7 +104,7 @@ table td.filename form { font-size:.85em; margin-left:3em; margin-right:3em; }
 
 /* File actions */
 .fileactions {
-	position:absolute; top:.6em; right:0;
+	top:.6em; right:0;
 	font-size:.8em;
 }
 #fileList .name { position:relative; /* Firefox needs to explicitly have this default set … */ }
