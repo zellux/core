@@ -87,7 +87,7 @@ var FileActions = {
 				return true;
 			}
 
-			if ((name === 'Download' || action !== defaultAction) && name !== 'Delete') {
+			if ((name === 'Rename') && (name !== 'Delete' || name !== 'Download')) {
 				var img = FileActions.icons[name];
 				if (img.call) {
 					img = img(file);
