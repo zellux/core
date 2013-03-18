@@ -68,7 +68,6 @@ var FileActions = {
 		if ($('tr').filterAttr('data-file', file).data('renaming')) {
 			return;
 		}
-		parent.children('a.name').append('<span class="fileactions" />');
 		var defaultAction = FileActions.getDefault(FileActions.getCurrentMimeType(), FileActions.getCurrentType(), FileActions.getCurrentPermissions());
 
 		var actionHandler = function (event) {
@@ -101,7 +100,7 @@ var FileActions = {
 				element.data('action', name);
 				//alert(element);
 				element.on('click', {a: null, elem: parent, actionFunc: actions[name]}, actionHandler);
-				parent.find('a.name>span.fileactions').append(element);
+				parent.find('a.name').append(element);
 			}
 
 		};
