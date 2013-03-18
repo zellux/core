@@ -114,7 +114,6 @@ a.action>img { max-height:16px; max-width:16px; vertical-align:text-bottom; }
 .selectedActions { display:none; float:right; }
 .selectedActions a { display:inline; margin:-.5em 0; padding:.5em !important; }
 .selectedActions a img { position:relative; top:.3em; }
-#fileList a.action { -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; filter: alpha(opacity=0); opacity: 0; display:none; }
 #fileList .share-icon a.action { opacity:0.5; display:inline; }
 #fileList tr:hover a.action, #fileList a.action.permanent {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=.5)";
