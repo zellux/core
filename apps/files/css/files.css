@@ -69,7 +69,7 @@ table th .name { float:left; margin-left:.5em; }
 table th, table td { border-bottom:1px solid #ddd; text-align:left; font-weight:normal; }
 table td { border-bottom:1px solid #eee; font-style:normal; background-position:1em .5em; background-repeat:no-repeat; }
 table th#headerName { width:100em; /* not really sure why this works better than 100% … table styling */ }
-table th#headerSize, table td.filesize { min-width:3em; padding:0 1em; text-align:right; }
+table th#headerSize, table td.filesize { min-width:3em; padding: 0 2em 0em 0em; }
 table th#headerDate, table td.date { min-width:11em; padding:0 .1em 0 1em; text-align:left; }
 
 /* Multiselect bar */

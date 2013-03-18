@@ -86,12 +86,12 @@ var FileActions = {
 				return true;
 			}
 
-			if ((name === 'Rename') && (name !== 'Delete' || name !== 'Download')) {
+			if (name === 'Rename' || action !== defaultAction || name === 'Delete' || name === 'Download') {
 				var img = FileActions.icons[name];
 				if (img.call) {
 					img = img(file);
 				}
-				var html = '<a href="#" class="action" data-action="' + name + '" original-title="' + name + '">';
+				var html = '<a href="#" class="action" data-action="' + name + '">';
 				if (img) {
 					html += '<img class ="svg" src="' + img + '" /> ';
 				}
@@ -100,7 +100,18 @@ var FileActions = {
 				element.data('action', name);
 				//alert(element);
 				element.on('click', {a: null, elem: parent, actionFunc: actions[name]}, actionHandler);
-				parent.find('a.name').append(element);
+                                if (name === 'Rename') {
+                                    parent.find('a.name').append(element);
+                                }
+                                else if (name === 'Download') {                                   
+                                    parent.parent().find('td.filesize').append(element);
+                                }
+                                else if (name === 'Versions') {
+                                    parent.parent().children().find('span.modified').append(element);
+                                }
+                                else if (name === 'Share') {
+                                    parent.parent().find('a.name').append(element);
+                                }
 			}
 
 		};
