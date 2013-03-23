@@ -24,7 +24,7 @@ OC.Share={
 					} else {
 						var file = $('tr').filterAttr('data-id', item);
 						if (file.length > 0) {
-							var action = $(file).find('.fileactions .action').filterAttr('data-action', 'Share');
+							var action = $(file).find('.action').filterAttr('data-action', 'Share');
 							var img = action.find('img').attr('src', image);
 							action.addClass('permanent');
 							action.html(' '+t('core', 'Shared')).prepend(img);
@@ -36,7 +36,7 @@ OC.Share={
 								// Search for possible parent folders that are shared
 								while (path != last) {
 									if (path == data['path']) {
-										var actions = $('.fileactions .action').filterAttr('data-action', 'Share');
+										var actions = $('.action').filterAttr('data-action', 'Share');
 										$.each(actions, function(index, action) {
 											var img = $(action).find('img');
 											if (img.attr('src') != OC.imagePath('core', 'actions/public')) {
@@ -80,7 +80,7 @@ OC.Share={
 		} else {
 			var file = $('tr').filterAttr('data-id', String(itemSource));
 			if (file.length > 0) {
-				var action = $(file).find('.fileactions .action').filterAttr('data-action', 'Share');
+				var action = $(file).find('.action').filterAttr('data-action', 'Share');
 				var img = action.find('img').attr('src', image);
 				if (shares) {
 					action.addClass('permanent');
