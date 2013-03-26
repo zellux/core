@@ -2,13 +2,15 @@
  This file is licensed under the Affero General Public License version 3 or later.
  See the COPYING-README file. */
 
- #dropdown {
+#dropdown-share {
+	 margin-right:7em;
+}
+#dropdown-share, #dropdown-version {
  	background:#eee;
  	border-bottom-left-radius:1em;
  	border-bottom-right-radius:1em;
  	box-shadow:0 1px 1px #777;
  	display:block;
- 	margin-right:7em;
  	position:absolute;
  	right:0;
  	width:19em;
@@ -38,11 +40,11 @@
 	vertical-align:text-bottom; /* properly align icons */
 }
 
- #dropdown label {
+ #dropdown-share label, #dropdown-version label {
  	font-weight:400;
  }
 
- #dropdown input[type="checkbox"] {
+ #dropdown-share input[type="checkbox"], #dropdown-version input[type="checkbox"] {
  	margin:0 .2em 0 .5em;
  }
 
@@ -64,11 +66,11 @@
  	padding-top:.5em;
  }
 
-#dropdown input[type="text"],#dropdown input[type="password"] {
+#dropdown-share input[type="text"],#dropdown-share input[type="password"], #dropdown-version input[type="text"],#dropdown-version input[type="password"] {
     width:90%;
 }
 
-#dropdown form {
+#dropdown-share form, #dropdown-version form {
     font-size: 100%;
     margin-left: 0;
     margin-right: 0;
@@ -93,7 +95,7 @@
 
 .reshare { white-space:normal; } /* fix shared by text going out of box */
 
-.ui-autocomplete { /* limit dropdown height to 4 1/2 entries */
+.ui-autocomplete { /* limit dropdown-share height to 4 1/2 entries */
 	max-height:103px;
 	overflow-y:auto;
 	overflow-x:hidden;
