@@ -6,7 +6,7 @@ $(document).ready(function(){
 			, t('files_versions', 'Versions')
 			, OC.PERMISSION_UPDATE
 			, function() {
-				// Specify icon for hitory button
+				// Specify icon for history button
 				return OC.imagePath('core','actions/history');
 			}
 			,function(filename){
