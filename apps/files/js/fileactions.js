@@ -91,11 +91,16 @@ var FileActions = {
 				if (img.call) {
 					img = img(file);
 				}
-				var html = '<a href="#" class="action" data-action="' + name + '">';
-				if (img) {
-					html += '<img class ="svg" src="' + img + '" /> ';
+				if (name === 'Versions')
+				{
+					var html = '<img class ="svg" src="' + img + '" /> ';
 				}
-                                
+				else {
+					var html = '<a href="#" class="action" data-action="' + name + '">';
+					if (img) {
+						html += '<img class ="svg" src="' + img + '" /> ';
+					}					
+				}
 				var element = $(html);
 				element.data('action', name);
 				//alert(element);
@@ -107,7 +112,7 @@ var FileActions = {
                                     parent.parent().find('td.filesize').append(element);
                                 }
                                 else if (name === 'Versions') {
-                                    parent.parent().children().find('span.modified').append(element);
+                                    parent.parent().children().find('a.modified').append(element);
                                 }
                                 else if (name === 'Share') {
                                     parent.parent().find('a.name').append('<span class="share-icon" />');

@@ -51,13 +51,13 @@
 				<?php print_unescaped($simple_file_size); ?>
 		</td>
 		<td class="date">
-			<span class="modified"
+			<a class="modified"
 				  title="<?php p($file['date']); ?>"
 				  style="color:rgb(<?php p($relative_date_color.','
 												.$relative_date_color.','
 												.$relative_date_color) ?>)">
 				<?php p($relative_modified_date); ?>
-			</span>
+			</a>
 		</td>
 	</tr>
 <?php endforeach;

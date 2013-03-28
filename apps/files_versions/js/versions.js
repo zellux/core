@@ -50,7 +50,7 @@ function createVersionsDropdown(filename, files) {
 
 	if (filename) {
 		$('tr').filterAttr('data-file',filename).addClass('mouseOver');
-		$(html).appendTo($('tr').filterAttr('data-file',filename).find('td.filesize'));
+		$(html).appendTo($('tr').filterAttr('data-file',filename).find('td.date a.modified'));
 	}
 
 	$("#makelink").click(function() {
