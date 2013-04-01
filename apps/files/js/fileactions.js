@@ -91,7 +91,7 @@ var FileActions = {
 				if (img.call) {
 					img = img(file);
 				}
-				if (name === 'Versions')
+				if (name === 'Versions' || name === 'Download')
 				{
 					var html = '<img class ="svg" src="' + img + '" /> ';
 				}

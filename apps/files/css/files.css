@@ -106,27 +106,29 @@ table td.filename form { font-size:.85em; margin-left:3em; margin-right:3em; }
 
 a.name .share-icon { position:absolute; right:3em; top: 0.4em; }
 #fileList .name { position:relative; /* Firefox needs to explicitly have this default set … */ }
-#fileList a.action img { position:relative; }
+#fileList a.action img, #fileList .filesize img, #fileList .date .modified img { position:relative; }
 #fileList a.action { display:inline; margin:-.5em 0; padding:1em .5em 1em .5em !important; }
 #fileList img.move2trash { display:inline; margin:-.5em 0; padding:1em .5em 1em .5em !important; float:right; }
 a.action.delete { float:right; }
-a.action>img { max-height:16px; max-width:16px; vertical-align:text-bottom; }
+a.action>img, #fileList .filesize img, #fileList .date .modified img { max-height:16px; max-width:16px; vertical-align:text-bottom; }
 .selectedActions { display:none; float:right; }
 .selectedActions a { display:inline; margin:-.5em 0; padding:.5em !important; }
 .selectedActions a img { position:relative; top:.3em; }
-#fileList .share-icon a.action { opacity:0.5; display:inline; }
+#fileList .share-icon a.action,#fileList .filesize img, #fileList .date .modified img { opacity:0.5; display:inline; }
 #fileList tr:hover a.action, #fileList a.action.permanent {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=.5)";
 	filter: alpha(opacity=.5);
 	opacity: .5;
 	display:inline;
 }
-#fileList tr:hover a.action:hover {
+#fileList tr:hover a.action:hover, #fileList .filesize img:hover, #fileList .date .modified img:hover {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
 	filter: alpha(opacity=1);
 	opacity: 1;
 	display:inline;
 }
+
+#fileList .filesize:hover>img, #fileList .date .modified:hover>img { opacity:1; }
 
 #scanning-message{ top:40%; left:40%; position:absolute; display:none; }
 
