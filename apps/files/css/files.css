@@ -114,14 +114,17 @@ a.action>img, #fileList .filesize img, #fileList .date .modified img { max-heigh
 .selectedActions { display:none; float:right; }
 .selectedActions a { display:inline; margin:-.5em 0; padding:.5em !important; }
 .selectedActions a img { position:relative; top:.3em; }
-#fileList .share-icon a.action,#fileList .filesize img, #fileList .date .modified img { opacity:0.5; display:inline; }
+#fileList .share-icon a.action,#fileList .filesize img, #fileList .date .modified img { opacity:0; display:inline; }
 #fileList tr:hover a.action, #fileList a.action.permanent {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=.5)";
 	filter: alpha(opacity=.5);
 	opacity: .5;
 	display:inline;
 }
-#fileList tr:hover a.action:hover, #fileList .filesize img:hover, #fileList .date .modified img:hover {
+
+#fileList tr .filesize img, #fileList .date .modified img { opacity:0; }
+#fileList tr:hover > .filesize img, #fileList tr:hover > .date .modified img { opacity:0.5; }
+#fileList tr:hover a.action:hover, #fileList tr:hover .filesize:hover > img, #fileList tr:hover .date .modified:hover > img {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
 	filter: alpha(opacity=1);
 	opacity: 1;
