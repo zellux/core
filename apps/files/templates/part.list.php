@@ -48,7 +48,9 @@
 		<td class="filesize"
 			title="<?php p(OCP\human_file_size($file['size'])); ?>"
 			style="color:rgb(<?php p($simple_size_color.','.$simple_size_color.','.$simple_size_color) ?>)">
+			<a href="<?php p(rtrim($_['downloadURL'],'/').'/'.trim($directory,'/').'/'.$name); ?>">
 				<?php print_unescaped($simple_file_size); ?>
+			</a>
 		</td>
 		<td class="date">
 			<a class="modified"
