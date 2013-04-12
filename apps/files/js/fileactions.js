@@ -99,6 +99,7 @@ var FileActions = {
 					var html = '<a href="#" class="action" data-action="' + name + '">';
 					if (img) {
 						html += '<img class ="svg" src="' + img + '" /> ';
+						html += '<span>' + t('files', name) + '</span></a>';
 					}					
 				}
 				var element = $(html);

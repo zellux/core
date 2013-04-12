@@ -27,6 +27,7 @@ OC.Share={
 							var action = $(file).find('.action').filterAttr('data-action', 'Share');
 							var img = action.find('img').attr('src', image);
 							action.addClass('permanent');
+							action.html(' '+ '<span>' + t('core', 'Shared') + '</span>').prepend(img);
 						} else {
 							var dir = $('#dir').val();
 							if (dir.length > 1) {
@@ -41,6 +42,7 @@ OC.Share={
 											if (img.attr('src') != OC.imagePath('core', 'actions/public')) {
 												img.attr('src', image);
 												$(action).addClass('permanent');
+												action.html(' '+ '<span>' + t('core', 'Shared') + '</span>').prepend(img);
 											}
 										});
 									}
@@ -82,8 +84,10 @@ OC.Share={
 				var img = action.find('img').attr('src', image);
 				if (shares) {
 					action.addClass('permanent');
+					action.html('<span> '+ escapeHTML(t('core', 'Shared'))+ '</span>').prepend(img);
 				} else {
 					action.removeClass('permanent');
+					action.html('<span> ' + escapeHTML(t('core', 'Share')) + '</span>').prepend(img);
 				}
 			}
 		}

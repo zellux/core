@@ -105,6 +105,7 @@ table td.filename form { font-size:.85em; margin-left:3em; margin-right:3em; }
 /* File actions */
 
 a.name .share-icon { position:absolute; right:3em; top: 0.4em; }
+a.name .share-icon a span, a.action span { font-size:10px;}
 #fileList .name { position:relative; /* Firefox needs to explicitly have this default set … */ }
 #fileList a.action img, #fileList .filesize img, #fileList .date .modified img { position:relative; }
 #fileList a.action { display:inline; margin:-.5em 0; padding:1em .5em 1em .5em !important; }
