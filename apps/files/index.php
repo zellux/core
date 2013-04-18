@@ -42,9 +42,9 @@ if (!\OC\Files\Filesystem::is_dir($dir . '/')) {
 }
 
 function fileCmp($a, $b) {
-	if ($a['type'] == 'dir' and $b['type'] != 'dir') {
+	if ($a['type'] === 'dir' and $b['type'] !== 'dir') {
 		return -1;
-	} elseif ($a['type'] != 'dir' and $b['type'] == 'dir') {
+	} elseif ($a['type'] !== 'dir' and $b['type'] === 'dir') {
 		return 1;
 	} else {
 		return strnatcasecmp($a['name'], $b['name']);
@@ -64,7 +64,7 @@ if (\OC\Files\Cache\Upgrade::needUpgrade($user)) { //dont load anything if we ne
 }
 foreach ($content as $i) {
 	$i['date'] = OCP\Util::formatDate($i['mtime']);
-	if ($i['type'] == 'file') {
+	if ($i['type'] === 'file') {
 		$fileinfo = pathinfo($i['name']);
 		$i['basename'] = $fileinfo['filename'];
 		if (!empty($fileinfo['extension'])) {
@@ -83,7 +83,7 @@ usort($files, "fileCmp");
 $breadcrumb = array();
 $pathtohere = '';
 foreach (explode('/', $dir) as $i) {
-	if ($i != '') {
+	if ($i !== '') {
 		$pathtohere .= '/' . $i;
 		$breadcrumb[] = array('dir' => $pathtohere, 'name' => $i);
 	}

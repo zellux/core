@@ -39,4 +39,4 @@ if ($files_list === NULL ) {
 	$files_list = array($files);
 }
 
-OC_Files::get($dir, $files_list, $_SERVER['REQUEST_METHOD'] == 'HEAD' ? true : false);
+OC_Files::get($dir, $files_list, $_SERVER['REQUEST_METHOD'] === 'HEAD' ? true : false);
