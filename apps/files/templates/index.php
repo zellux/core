@@ -2,7 +2,7 @@
 <div id="controls">
 	<?php print_unescaped($_['breadcrumb']); ?>
 	<?php if ($_['isCreatable']):?>
-		<div class="actions <?php if (isset($_['files']) and count($_['files'])==0):?>emptyfolder<?php endif; ?>">
+		<div class="actions <?php if (isset($_['files']) and count($_['files']) === 0):?>emptyfolder<?php endif; ?>">
 			<div id="new" class="button">
 				<a><?php p($l->t('New'));?></a>
 				<ul>
@@ -57,7 +57,7 @@
 	<input type="hidden" name="permissions" value="<?php p($_['permissions']); ?>" id="permissions">
 </div>
 
-<?php if (isset($_['files']) and $_['isCreatable'] and count($_['files'])==0):?>
+<?php if (isset($_['files']) and $_['isCreatable'] and count($_['files']) === 0):?>
 	<div id="emptyfolder"><?php p($l->t('Nothing in here. Upload something!'))?></div>
 <?php endif; ?>
 
@@ -82,7 +82,7 @@
 				<span id="modified"><?php p($l->t( 'Modified' )); ?></span>
 				<?php if ($_['permissions'] & OCP\PERMISSION_DELETE): ?>
 <!-- 					NOTE: Temporary fix to allow unsharing of files in root of Shared folder -->
-					<?php if ($_['dir'] == '/Shared'): ?>
+					<?php if ($_['dir'] === '/Shared'): ?>
 						<span class="selectedActions"><a href="" class="delete-selected">
 							<?php p($l->t('Unshare'))?>
 							<img class="svg" alt="<?php p($l->t('Unshare'))?>"

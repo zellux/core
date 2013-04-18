@@ -27,7 +27,7 @@ Files={
 		procesSelection();
 	},
 	updateMaxUploadFilesize:function(response) {
-		if(response == undefined) {
+		if(response === undefined) {
 			return;
 		}
 		if(response.data !== undefined && response.data.uploadMaxFilesize !== undefined) {
@@ -36,7 +36,7 @@ Files={
 			$('#usedSpacePercent').val(response.data.usedSpacePercent);
 			Files.displayStorageWarnings();
 		}
-		if(response[0] == undefined) {
+		if(response[0] === undefined) {
 			return;
 		}
 		if(response[0].uploadMaxFilesize !== undefined) {
@@ -52,7 +52,7 @@ Files={
 			OC.Notification.show(t('files', '\'.\' is an invalid file name.'));
 			return false;
 		}
-		if (name.length == 0) {
+		if (name.length === 0) {
 			OC.Notification.show(t('files', 'File name cannot be empty.'));
 			return false;
 		}
@@ -60,7 +60,7 @@ Files={
 		// check for invalid characters
 		var invalid_characters = ['\\', '/', '<', '>', ':', '"', '|', '?', '*'];
 		for (var i = 0; i < invalid_characters.length; i++) {
-			if (name.indexOf(invalid_characters[i]) != -1) {
+			if (name.indexOf(invalid_characters[i]) !== -1) {
 				OC.Notification.show(t('files', "Invalid name, '\\', '/', '<', '>', ':', '\"', '|', '?' and '*' are not allowed."));
 				return false;
 			}
@@ -139,7 +139,7 @@ $(document).ready(function() {
 				var rows = $(this).parent().parent().parent().children('tr');
 				for (var i = start; i < end; i++) {
 					$(rows).each(function(index) {
-						if (index == i) {
+						if (index === i) {
 							var checkbox = $(this).children().children('input:checkbox');
 							$(checkbox).attr('checked', 'checked');
 							$(checkbox).parent().parent().addClass('selected');
@@ -157,7 +157,7 @@ $(document).ready(function() {
 				$(checkbox).attr('checked', 'checked');
 				$(checkbox).parent().parent().toggleClass('selected');
 				var selectedCount=$('td.filename input:checkbox:checked').length;
-				if (selectedCount == $('td.filename input:checkbox').length) {
+				if (selectedCount === $('td.filename input:checkbox').length) {
 					$('#select_all').attr('checked', 'checked');
 				}
 			}
@@ -204,7 +204,7 @@ $(document).ready(function() {
 			var rows = $(this).parent().parent().parent().children('tr');
 			for (var i = start; i < end; i++) {
 				$(rows).each(function(index) {
-					if (index == i) {
+					if (index === i) {
 						var checkbox = $(this).children().children('input:checkbox');
 						$(checkbox).attr('checked', 'checked');
 						$(checkbox).parent().parent().addClass('selected');
@@ -297,7 +297,7 @@ $(document).ready(function() {
 		$('#new>ul').hide();
 		$('#new').removeClass('active');
 		$('#new li').each(function(i,element){
-			if($(element).children('p').length==0){
+			if($(element).children('p').length === 0){
 				$(element).children('form').remove();
 				$(element).append('<p>'+$(element).data('text')+'</p>');
 			}
@@ -311,12 +311,12 @@ $(document).ready(function() {
 		$('#new').toggleClass('active');
 	});
 	$('#new li').click(function(){
-		if($(this).children('p').length==0){
+		if($(this).children('p').length === 0){
 			return;
 		}
 
 		$('#new li').each(function(i,element){
-			if($(element).children('p').length==0){
+			if($(element).children('p').length === 0){
 				$(element).children('form').remove();
 				$(element).append('<p>'+$(element).data('text')+'</p>');
 			}
@@ -335,12 +335,12 @@ $(document).ready(function() {
 			event.stopPropagation();
 			event.preventDefault();
 			var newname=input.val();
-			if(type == 'web' && newname.length == 0) {
+			if(type === 'web' && newname.length === 0) {
 				OC.Notification.show(t('files', 'URL cannot be empty.'));
 				return false;
-			} else if (type != 'web' && !Files.isFileNameValid(newname)) {
+			} else if (type !== 'web' && !Files.isFileNameValid(newname)) {
 				return false;
-			} else if( type == 'folder' && $('#dir').val() == '/' && newname == 'Shared') {
+			} else if( type === 'folder' && $('#dir').val() === '/' && newname === 'Shared') {
 				OC.Notification.show(t('files','Invalid folder name. Usage of \'Shared\' is reserved by Owncloud'));
 				return false;
 			}
@@ -348,7 +348,7 @@ $(document).ready(function() {
 				FileList.lastAction();
 			}
 			var name = getUniqueName(newname);
-			if (newname != name) {
+			if (newname !== name) {
 				FileList.checkName(name, newname, true);
 				var hidden = true;
 			} else {
@@ -360,7 +360,7 @@ $(document).ready(function() {
 						OC.filePath('files','ajax','newfile.php'),
 						{dir:$('#dir').val(),filename:name},
 						function(result){
-							if (result.status == 'success') {
+							if (result.status === 'success') {
 								var date=new Date();
 								FileList.addFile(name,0,date,false,hidden);
 								var tr=$('tr').filterAttr('data-file',name);
@@ -380,7 +380,7 @@ $(document).ready(function() {
 						OC.filePath('files','ajax','newfolder.php'),
 						{dir:$('#dir').val(),foldername:name},
 						function(result){
-							if (result.status == 'success') {
+							if (result.status === 'success') {
 								var date=new Date();
 								FileList.addDir(name,0,date,hidden);
 								var tr=$('tr').filterAttr('data-file',name);
@@ -392,11 +392,11 @@ $(document).ready(function() {
 					);
 					break;
 				case 'web':
-					if(name.substr(0,8)!='https://' && name.substr(0,7)!='http://'){
+					if(name.substr(0,8) !== 'https://' && name.substr(0,7) !== 'http://'){
 						name='http://'+name;
 					}
 					var localName=name;
-					if(localName.substr(localName.length-1,1)=='/'){//strip /
+					if(localName.substr(localName.length-1,1) === '/'){//strip /
 						localName=localName.substr(0,localName.length-1)
 					}
 					if(localName.indexOf('/')){//use last part of url
@@ -470,9 +470,9 @@ $(document).ready(function() {
 
 	function resizeBreadcrumbs(firstRun) {
 		var width = $(this).width();
-		if (width != lastWidth) {
+		if (width !== lastWidth) {
 			if ((width < lastWidth || firstRun) && width < breadcrumbsWidth) {
-				if (hiddenBreadcrumbs == 0) {
+				if (hiddenBreadcrumbs === 0) {
 					breadcrumbsWidth -= $(breadcrumbs[1]).get(0).offsetWidth;
 					$(breadcrumbs[1]).find('a').hide();
 					$(breadcrumbs[1]).append('<span>...</span>');
@@ -489,7 +489,7 @@ $(document).ready(function() {
 			} else if (width > lastWidth && hiddenBreadcrumbs > 0) {
 				var i = hiddenBreadcrumbs;
 				while (width > breadcrumbsWidth && i > 0) {
-					if (hiddenBreadcrumbs == 1) {
+					if (hiddenBreadcrumbs === 1) {
 						breadcrumbsWidth -= $(breadcrumbs[1]).get(0).offsetWidth;
 						$(breadcrumbs[1]).find('span').remove();
 						$(breadcrumbs[1]).find('a').show();
@@ -590,7 +590,7 @@ scanFiles.scanning=false;
 function boolOperationFinished(data, callback) {
 	result = jQuery.parseJSON(data.responseText);
 	Files.updateMaxUploadFilesize(result);
-	if(result.status == 'success'){
+	if(result.status === 'success'){
 		callback.call();
 	} else {
 		alert(result.data.message);
@@ -611,7 +611,7 @@ var createDragShadow = function(event){
 
 	var selectedFiles = getSelectedFiles();
 
-	if (!isDragSelected && selectedFiles.length == 1) {
+	if (!isDragSelected && selectedFiles.length === 1) {
 		//revert the selection
 		$(event.target).parents('tr').find('td input:first').prop('checked',false);
 	}
@@ -702,14 +702,14 @@ var crumbDropOptions={
 	drop: function( event, ui ) {
 		var target=$(this).data('dir');
 		var dir=$('#dir').val();
-		while(dir.substr(0,1)=='/'){//remove extra leading /'s
+		while(dir.substr(0,1) === '/'){//remove extra leading /'s
 				dir=dir.substr(1);
 		}
 		dir='/'+dir;
-		if(dir.substr(-1,1)!='/'){
+		if(dir.substr(-1,1) !== '/'){
 			dir=dir+'/';
 		}
-		if(target==dir || target+'/'==dir){
+		if(target==dir || target+'/' === dir){
 			return;
 		}
 		var files = ui.helper.find('tr');
@@ -738,9 +738,9 @@ var crumbDropOptions={
 
 function procesSelection(){
 	var selected=getSelectedFiles();
-	var selectedFiles=selected.filter(function(el){return el.type=='file'});
-	var selectedFolders=selected.filter(function(el){return el.type=='dir'});
-	if(selectedFiles.length==0 && selectedFolders.length==0) {
+	var selectedFiles=selected.filter(function(el){return el.type === 'file'});
+	var selectedFolders=selected.filter(function(el){return el.type === 'dir'});
+	if(selectedFiles.length === 0 && selectedFolders.length === 0) {
 		$('#headerName>span.name').text(t('files','Name'));
 		$('#headerSize').text(t('files','Size'));
 		$('#modified').text(t('files','Modified'));
@@ -761,7 +761,7 @@ function procesSelection(){
 		$('#headerSize').attr('title',humanFileSize(totalSize));
 		var selection='';
 		if(selectedFolders.length>0){
-			if(selectedFolders.length==1){
+			if(selectedFolders.length === 1){
 				selection+=t('files','1 folder');
 			}else{
 				selection+=t('files','{count} folders',{count: selectedFolders.length});
@@ -771,7 +771,7 @@ function procesSelection(){
 			}
 		}
 		if(selectedFiles.length>0){
-			if(selectedFiles.length==1){
+			if(selectedFiles.length === 1){
 				selection+=t('files','1 file');
 			}else{
 				selection+=t('files','{count} files',{count: selectedFiles.length});
