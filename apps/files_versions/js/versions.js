@@ -16,7 +16,7 @@ $(document).ready(function(){
 				var file = $('#dir').val()+'/'+filename;
 				// Check if drop down is already visible for a different file
 				if (($('#dropdown').length > 0) && $('#dropdown').hasClass('drop-versions') ) {
-					if (file != $('#dropdown').data('file')) {
+					if (file !== $('#dropdown').data('file')) {
 						$('#dropdown').hide('blind', function() {
 							$('#dropdown').remove();
 							$('tr').removeClass('mouseOver');
@@ -92,7 +92,7 @@ function createVersionsDropdown(filename, files) {
 			data: {file: file, revision: revision},
 			async: false,
 			success: function(response) {
-				if (response.status=='error') {
+				if (response.status === 'error') {
 					OC.dialogs.alert('Failed to revert '+file+' to revision '+formatDate(revision*1000)+'.','Failed to revert');
 				} else {
 					$('#dropdown').hide('blind', function() {
@@ -114,7 +114,7 @@ function createVersionsDropdown(filename, files) {
 
 // 		} else {
 // 			var checked = ((permissions > 0) ? 'checked="checked"' : 'style="display:none;"');
-// 			var style = ((permissions == 0) ? 'style="display:none;"' : '');
+// 			var style = ((permissions === 0) ? 'style="display:none;"' : '');
 // 			var user = '<li data-uid_shared_with="'+uid_shared_with+'">';
 // 			user += '<a href="" class="unshare" style="display:none;"><img class="svg" alt="Unshare" src="'+OC.imagePath('core','actions/delete')+'"/></a>';
 // 			user += uid_shared_with;
