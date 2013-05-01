@@ -75,3 +75,10 @@ OC_API::register(
 	'core',
 	OC_API::USER_AUTH
 	);
+OC_API::register(
+	'get',
+	'/cloud/users/{userid}',
+	array('OC_OCS_Cloud', 'getUser'),
+	'core',
+	OC_API::USER_AUTH
+);
