@@ -93,15 +93,44 @@ table.shareAPI td { padding-bottom: 0.8em; }
 .pressed {background-color:#DDD;}
 
 /* PASSWORD */
-#password-strength {
+#password-strength-container {
 	display: inline-block;
-	margin-left: 13em;
+	position: absolute;
+	left: 185px;
+	height: 5px;
+	width: 139px;
 }
+
+#password-strength-bg, #password-strength {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 5px;
+}
+
+#password-strength-bg {
+	background-color: #BBB;
+}
+
+#password-strength {
+	z-index: 5;
+}
+
+.password-strength-separator {
+	display: inline-block;
+	position: absolute;
+	background-color: #FFF;
+	height: 5px;
+	width: 2px;
+	z-index: 10;
+}
+
 .password-bad {
-	color:#C33; 
-	font-weight:bold;
+	background-color: #C33;
+}
+.password-medium {
+	background-color: #F80;
 }
 .password-good {
-	 color :#33CC33;
-	 font-weight: bold;
+	background-color: #3C3;
 }
