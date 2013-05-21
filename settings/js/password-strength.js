@@ -32,7 +32,7 @@ $(function() {
 
 		$('#password-strength').attr('class', css);
 		// possible scores: 0-4
-		$('#password-strength').css('width', (result.score * 25) + '%' );
+		$('#password-strength').css('width', ((result.score == 0 ? 0.5 : result.score) * 25) + '%' );
 		$('#password-strength-container').attr('title', titles[result.score]);
 	});
 });
