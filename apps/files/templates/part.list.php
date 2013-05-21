@@ -26,11 +26,11 @@
 			style="background-image:url(<?php print_unescaped(OCP\mimetype_icon($file['mimetype'])); ?>)"
 		<?php endif; ?>
 			>
-		<?php if(!isset($_['readonly']) || !$_['readonly']): ?><input type="checkbox" /><?php endif; ?>
+		<?php if(!isset($_['readonly']) || !$_['readonly']): ?><input type="checkbox" id="select-file-<?php p($file['fileid']); ?>" /><?php endif; ?>
 		<?php if($file['type'] == 'dir'): ?>
 			<a class="name" href="<?php p(rtrim($_['baseURL'],'/').'/'.trim($directory,'/').'/'.$name); ?>" title="">
 		<?php else: ?>
-			<a class="name" href="<?php p(rtrim($_['downloadURL'],'/').'/'.trim($directory,'/').'/'.$name); ?>" title="">
+			<label class="name" for="select-file-<?php p($file['fileid']); ?>" title="">
 		<?php endif; ?>
 			<span class="nametext">
 				<?php if($file['type'] == 'dir'):?>
