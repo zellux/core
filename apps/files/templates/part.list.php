@@ -43,6 +43,7 @@
 				<span class="uploadtext" currentUploads="0">
 				</span>
 			<?php endif;?>
+			</label>
 			</a>
 		</td>
 		<td class="filesize"
