@@ -108,6 +108,7 @@ var FileActions = {
 				element.on('click', {a: null, elem: parent, actionFunc: actions[name]}, actionHandler);
                                 if (name === 'Rename') {
                                     parent.find('a.name').append(element);
+									parent.find('label.name').append(element);
                                 }
                                 else if (name === 'Download') {                                   
                                     parent.parent().find('td.filesize').append(element);
@@ -118,6 +119,8 @@ var FileActions = {
                                 else if (name === 'Share') {
                                     parent.parent().find('a.name').append('<span class="share-icon" />');
                                     parent.parent().find('a.name>span.share-icon').append(element);
+                                    parent.parent().find('label.name').append('<span class="share-icon" />');
+                                    parent.parent().find('label.name>span.share-icon').append(element);
                                 }
 			}
 

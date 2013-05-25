@@ -78,14 +78,14 @@ table.multiselect thead { position:fixed; top:82px; z-index:1; -moz-box-sizing: 
 table.multiselect thead th { background:rgba(230,230,230,.8); color:#000; font-weight:bold; border-bottom:0; }
 table.multiselect #headerName { width: 84%; }
 table td.selection, table th.selection, table td.fileaction { width:2em; text-align:center; }
-table td.filename a.name { display:block; height:1.5em; vertical-align:middle; margin-left:3em; }
-table tr[data-type="dir"] td.filename a.name span.nametext {font-weight:bold; }
+table td.filename a.name, table td.filename label.name { display:block; height:1.5em; vertical-align:middle; margin-left:3em; }
+table tr[data-type="dir"] td.filename a.name span.nametext, table tr[data-type="dir"] td.filename label.name span.nametext {font-weight:bold; }
 table td.filename input.filename { width:100%; cursor:text; }
 table td.filename a, table td.login, table td.logout, table td.download, table td.upload, table td.create, table td.delete { padding:.2em .5em .5em 0; }
 table td.filename .nametext, .uploadtext, .modified { float:left; padding:.3em 0; }
 /* TODO fix usability bug (accidental file/folder selection) */
 table td.filename .nametext { overflow:hidden; text-overflow:ellipsis; }
-a.name span.nametext { margin-left:0; }
+a.name span.nametext, label.name span.nametext { margin-left:0; }
 span.nametext { margin-left:15px; font-weight:normal; }
 table td.filename .uploadtext { font-weight:normal; margin-left:.5em; }
 table td.filename form { font-size:.85em; margin-left:3em; margin-right:3em; }
@@ -106,7 +106,7 @@ table td.filename form { font-size:.85em; margin-left:3em; margin-right:3em; }
 
 /* File actions */
 
-a.name .share-icon { position:absolute; right:3em; top: 0.4em; }
+a.name .share-icon,label.name .share-icon { position:absolute; right:3em; top: 0.4em; }
 a.name .share-icon a span, a.action span { font-size:10px;}
 #fileList .name { position:relative; /* Firefox needs to explicitly have this default set … */ }
 #fileList a.action img, #fileList .filesize img, #fileList .date .modified img { position:relative; }
