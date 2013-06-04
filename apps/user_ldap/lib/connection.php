@@ -48,6 +48,7 @@ class Connection {
 		'turnOffCertCheck' => null,
 		'ldapIgnoreNamingRules' => null,
 		'ldapUserDisplayName' => null,
+		'ldapUserDisplayName2' => null,
 		'ldapUserFilter' => null,
 		'ldapGroupFilter' => null,
 		'ldapGroupDisplayName' => null,
@@ -238,6 +239,8 @@ class Connection {
 				= $this->$v('ldap_turn_off_cert_check');
 			$this->config['ldapUserDisplayName']
 				= mb_strtolower($this->$v('ldap_display_name'), 'UTF-8');
+			$this->config['ldapUserDisplayName2']
+				= mb_strtolower($this->$v('ldap_user_display_name_2'), 'UTF-8');
 			$this->config['ldapUserFilter']
 				= $this->$v('ldap_userlist_filter');
 			$this->config['ldapGroupFilter'] = $this->$v('ldap_group_filter');
@@ -295,6 +298,7 @@ class Connection {
 			'ldap_login_filter'=>'ldapLoginFilter',
 			'ldap_group_filter'=>'ldapGroupFilter',
 			'ldap_display_name'=>'ldapUserDisplayName',
+			'ldap_user_display_name_2'=>'ldapUserDisplayName2',
 			'ldap_group_display_name'=>'ldapGroupDisplayName',
 			'ldap_tls'=>'ldapTLS',
 			'ldap_nocase'=>'ldapNoCase',
@@ -539,6 +543,7 @@ class Connection {
 			'ldap_login_filter'                 => 'uid=%uid',
 			'ldap_group_filter'                 => 'objectClass=posixGroup',
 			'ldap_display_name'                 => 'cn',
+			'ldap_user_display_name_2'          => '',
 			'ldap_group_display_name'           => 'cn',
 			'ldap_tls'                          => 1,
 			'ldap_nocase'                       => 0,

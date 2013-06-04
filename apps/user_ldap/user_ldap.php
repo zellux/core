@@ -235,9 +235,25 @@ class USER_LDAP extends lib\Access implements \OCP\UserInterface {
 			$this->username2dn($uid),
 			$this->connection->ldapUserDisplayName);
 
+		//Check whether the display name is configured to have a 2nd feature
+		$additionalAttribute = $this->connection->ldapUserDisplayName2;
+		if(!empty($additionalAttribute)) {
+			$displayName2 = $this->readAttribute(
+				$this->username2dn($uid),
+				$additionalAttribute);
+		} else {
+			$displayName2 = false;
+		}
+
 		if($displayName && (count($displayName) > 0)) {
-			$this->connection->writeToCache($cacheKey, $displayName[0]);
-			return $displayName[0];
+			$displayName = $displayName[0];
+
+			if($displayName2 && (count($displayName2) > 0)) {
+				$displayName .= ' ('.$displayName2[0].')';
+			}
+
+			$this->connection->writeToCache($cacheKey, $displayName);
+			return $displayName;
 		}
 
 		return null;
