@@ -94,7 +94,7 @@ table.shareAPI td { padding-bottom: 0.8em; }
 
 /* PASSWORD */
 #password-strength-container {
-	display: inline-block;
+	display: none; /* see ../js/password-strength.js: inline-block */
 	position: absolute;
 	left: 185px;
 	height: 5px;

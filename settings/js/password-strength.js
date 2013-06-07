@@ -7,7 +7,15 @@
 
 $(function() {
 	$('#pass2').keyup(function() {
-		var result = zxcvbn($(this).val());
+		var password = $(this).val();
+
+		// hide strength meter if no input is provided
+		$('#password-strength-container').css(
+			'display',
+			(password === '') ? 'none': 'inline-block'
+		);
+
+		var result = zxcvbn(password);
 		var titles = [
 			t('core', 'Weakest'),
 			t('core', 'Weak'),
@@ -32,7 +40,7 @@ $(function() {
 
 		$('#password-strength').attr('class', css);
 		// possible scores: 0-4
-		$('#password-strength').css('width', ((result.score == 0 ? 0.5 : result.score) * 25) + '%' );
+		$('#password-strength').css('width', (result.score * 25) + '%' );
 		$('#password-strength-container').attr('title', titles[result.score]);
 	});
 });
