@@ -106,6 +106,23 @@ if($_['passwordChangeSupported']) {
 	print_unescaped($form);
 };?>
 
+<?php if($_['enableDecryptAll']): ?>
+<form id="encryption">
+	<fieldset class="personalblock">
+		<legend>
+			<?php p( $l->t( 'Encryption' ) ); ?>
+		</legend>
+		<?php p($l->t( "The encryption app is no longer enabled, decrypt all your file" )); ?>
+		<p>
+			<button
+				type="button"
+				name="submitDecryptAll"><?php p($l->t( "Decrypt all Files" )); ?>
+			</button>
+		</p>
+		<br />
+	</fieldset>
+</form>
+<?php endif; ?>
 
 <fieldset class="personalblock">
 	<legend><strong><?php p($l->t('Version'));?></strong></legend>
@@ -113,5 +130,4 @@ if($_['passwordChangeSupported']) {
 	<?php p(OC_Util::getEditionString()); ?> <br />
 	<?php print_unescaped($l->t('Developed by the <a href="http://ownCloud.org/contact" target="_blank">ownCloud community</a>, the <a href="https://github.com/owncloud" target="_blank">source code</a> is licensed under the <a href="http://www.gnu.org/licenses/agpl-3.0.html" target="_blank"><abbr title="Affero General Public License">AGPL</abbr></a>.')); ?>
 </fieldset>
-
 
