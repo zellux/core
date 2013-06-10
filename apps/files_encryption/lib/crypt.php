@@ -661,4 +661,8 @@ class Crypt {
 
 	}
 
+	public static function decryptAll() {
+		error_log("decrypt all");
+	}
+
 }
