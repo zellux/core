@@ -770,6 +770,10 @@ class Util {
 		}
 	}
 
+	public function decryptAll() {
+		
+	}
+
 	/**
 	 * @brief Return important encryption related paths
 	 * @param string $pathName Name of the directory to return the path of
