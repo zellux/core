@@ -10,42 +10,42 @@ $(function() {
 		cache: true,
 		url: OC.linkTo('3rdparty','zxcvbn/js/zxcvbn.js')
 	}).done(function(){
-	$('#pass2').keyup(function() {
-		var password = $(this).val();
+		$('#pass2').keyup(function() {
+			var password = $(this).val();
 
-		// hide strength meter if no input is provided
-		$('#password-strength-container').css(
-			'display',
-			(password === '') ? 'none': 'inline-block'
-		);
+			// hide strength meter if no input is provided
+			$('#password-strength-container').css(
+				'display',
+				(password === '') ? 'none': 'inline-block'
+			);
 
-		var result = zxcvbn(password);
-		var titles = [
-			t('core', 'Weakest'),
-			t('core', 'Weak'),
-			t('core', 'So-so'),
-			t('core', 'Good'),
-			t('core', 'Perfect')
-		];
+			var result = zxcvbn(password);
+			var titles = [
+				t('core', 'Weakest'),
+				t('core', 'Weak'),
+				t('core', 'So-so'),
+				t('core', 'Good'),
+				t('core', 'Perfect')
+			];
 
-		switch(result.score) {
-			case 0:
-			case 1:
-				var css = 'password-bad';
-				break;
-			case 2:
-				var css = 'password-medium';
-				break;
-			case 3:
-			case 4:
-				var css = 'password-good';
-				break;
-		}
+			switch(result.score) {
+				case 0:
+				case 1:
+					var css = 'password-bad';
+					break;
+				case 2:
+					var css = 'password-medium';
+					break;
+				case 3:
+				case 4:
+					var css = 'password-good';
+					break;
+			}
 
-		$('#password-strength').attr('class', css);
-		// possible scores: 0-4
-		$('#password-strength').css('width', ((result.score == 0 ? 1 : result.score) * 25) + '%' );
-		$('#password-strength-container').attr('title', titles[result.score]);
-	});
+			$('#password-strength').attr('class', css);
+			// possible scores: 0-4
+			$('#password-strength').css('width', ((result.score == 0 ? 1 : result.score) * 25) + '%' );
+			$('#password-strength-container').attr('title', titles[result.score]);
+		});
 	});
 });
