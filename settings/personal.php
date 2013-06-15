@@ -10,7 +10,6 @@ OC_App::loadApps();
 
 OC_Util::addScript( 'settings', 'personal' );
 OC_Util::addStyle( 'settings', 'settings' );
-OC_Util::addScript( '3rdparty/zxcvbn', 'zxcvbn' );
 OC_Util::addScript( 'settings', 'password-strength' );
 OC_Util::addScript( '3rdparty', 'chosen/chosen.jquery.min' );
 OC_Util::addStyle( '3rdparty', 'chosen' );
