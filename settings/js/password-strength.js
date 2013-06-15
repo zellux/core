@@ -6,6 +6,10 @@
  */
 
 $(function() {
+	$.ajax({
+		cache: true,
+		url: OC.linkTo('3rdparty','zxcvbn/js/zxcvbn.js')
+	}).done(function(){
 	$('#pass2').keyup(function() {
 		var password = $(this).val();
 
@@ -40,7 +44,8 @@ $(function() {
 
 		$('#password-strength').attr('class', css);
 		// possible scores: 0-4
-		$('#password-strength').css('width', (result.score * 25) + '%' );
+		$('#password-strength').css('width', ((result.score == 0 ? 1 : result.score) * 25) + '%' );
 		$('#password-strength-container').attr('title', titles[result.score]);
+	});
 	});
 });
