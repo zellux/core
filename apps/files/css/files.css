@@ -163,6 +163,10 @@ a.action>img { max-height:16px; max-width:16px; vertical-align:text-bottom; }
 	opacity: .5;
 }
 
+.summary:hover {
+	background-color: #fff;
+}
+
 .summary td {
 	padding-top: 8px;
 	border-bottom: none;
