@@ -163,6 +163,11 @@ a.action>img { max-height:16px; max-width:16px; vertical-align:text-bottom; }
 	opacity: .5;
 }
 
+.summary td {
+	padding-top: 8px;
+	border-bottom: none;
+}
+
 .summary .info {
 	margin-left: 3em;
 }

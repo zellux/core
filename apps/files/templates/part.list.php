@@ -81,7 +81,7 @@ $totalsize = 0; ?>
 				}
 			}
 			if ($totaldirs !== 0 && $totalfiles !== 0) {
-				p(' & ');
+				p(' ' . $l->t('and') . ' ');
 			}
 			if ($totalfiles !== 0) {
 				p($totalfiles.' ');
