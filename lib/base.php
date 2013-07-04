@@ -224,6 +224,7 @@ class OC {
 			// render error page
 			$tmpl = new OC_Template('', 'error', 'guest');
 			$tmpl->assign('errors', array(1 => array('error' => 'ownCloud is in maintenance mode')));
+			OC_Util::addscript('maintenance-check');
 			$tmpl->printPage();
 			exit();
 		}
