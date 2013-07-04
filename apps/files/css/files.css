@@ -169,6 +169,7 @@ a.action>img { max-height:16px; max-width:16px; vertical-align:text-bottom; }
 
 .summary td {
 	padding-top: 8px;
+	padding-bottom: 8px;
 	border-bottom: none;
 }
 
