@@ -160,7 +160,10 @@ a.action>img { max-height:16px; max-width:16px; vertical-align:text-bottom; }
 }
 
 .summary {
-	opacity: .5;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	opacity: .3;
+	height: 70px;
 }
 
 .summary:hover, .summary {
