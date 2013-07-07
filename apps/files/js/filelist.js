@@ -398,6 +398,62 @@ var FileList={
 						});
 					}
 				});
+	},
+	createFileSummary: function() {
+		if( $('tr[data-file]').length > 0 ) {
+			var totaldirs = 0;
+			var totalfiles = 0;
+			var totalsize = 0;
+
+			// Count types and filesize
+			$.each($('tr[data-file]'), function(index, value) {
+				if (value.dataset.type === 'dir') { totaldirs++; }
+				else if (value.dataset.type === 'file') { totalfiles++; }
+				totalsize += parseInt(value.dataset.size);
+			});
+			// TODO use proper l10n plurals
+			var tempinfo = t('files', '<span class="info"><span class="dirinfo">{dirs} directory(ies)</span><span class="connector"> and </span><span class="fileinfo">{files} file(s)</span></span>');
+			console.log(info);
+			var info = $(tempinfo).octemplate({
+				dirs: '<span class="dirs">' + totaldirs + '</span>',
+				files: '<span class="files">'+ totalfiles + '</span>'
+			}, {escapeFunction: null})[0].outerHTML;
+
+			var filesize = '<td class="filesize">'+simpleFileSize(totalsize)+'</td>';
+
+			$('#fileList').append('<tr class="summary"><td>'+info+'</td>'+filesize+'<td></td></tr>');
+
+			// Show only what's necessary, e.g.: no files: don't show "0 files"
+			if ($('.summary .dirs').html() === "0") {
+				$('.summary .dirinfo').hide();
+				$('.summary .connector').hide();
+			} else if ($('.summary .files').html() === "0") {
+				$('.summary .fileinfo').hide();
+				$('.summary .connector').hide();
+			}
+		}
+	},
+	updateFileSummary: function() {
+		if( $('tr[data-file]').length > 0 ) {
+			var totaldirs = 0;
+			var totalfiles = 0;
+			var totalsize = 0;
+			$.each($('tr[data-file]'), function(index, value) {
+				if (value.dataset.type === 'dir') { totaldirs++; }
+				else if (value.dataset.type === 'file') { totalfiles++; }
+				totalsize += parseInt(value.dataset.size);
+			});
+			$('.summary .dirs').html(totaldirs);
+			$('.summary .files').html(totalfiles);
+			$('.summary .filesize').html(humanFileSize(totalsize));
+			if ($('.summary .dirs').html() === "0") {
+				$('.summary .dirinfo').hide();
+				$('.summary .connector').hide();
+			} else if ($('.summary .files').html() === "0") {
+				$('.summary .fileinfo').hide();
+				$('.summary .connector').hide();
+			}
+		}
 	}
 };
 
@@ -598,4 +654,6 @@ $(document).ready(function(){
 	$(window).unload(function (){
 		$(window).trigger('beforeunload');
 	});
+
+	FileList.createFileSummary();
 });
