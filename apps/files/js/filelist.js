@@ -412,11 +412,12 @@ var FileList={
 				totalsize += parseInt(value.dataset.size);
 			});
 			// TODO use proper l10n plurals
-			var tempinfo = t('files', '<span class="info"><span class="dirinfo">{dirs} directory(ies)</span><span class="connector"> and </span><span class="fileinfo">{files} file(s)</span></span>');
-			console.log(info);
+			var translatedinfo = t('files', '{dirs} directory(ies){connectorhtml} and {files} file(s)');
+			tempinfo = '<span class="info"><span class="dirinfo">' + translatedinfo + '</span></span>';
 			var info = $(tempinfo).octemplate({
 				dirs: '<span class="dirs">' + totaldirs + '</span>',
-				files: '<span class="files">'+ totalfiles + '</span>'
+				connectorhtml: '</span><span class="connector">',
+				files: '</span><span class="fileinfo"><span class="files">'+ totalfiles + '</span>'
 			}, {escapeFunction: null})[0].outerHTML;
 
 			var filesize = '<td class="filesize">'+simpleFileSize(totalsize)+'</td>';
@@ -445,7 +446,7 @@ var FileList={
 			});
 			$('.summary .dirs').html(totaldirs);
 			$('.summary .files').html(totalfiles);
-			$('.summary .filesize').html(humanFileSize(totalsize));
+			$('.summary .filesize').html(simpleFileSize(totalsize));
 			if ($('.summary .dirs').html() === "0") {
 				$('.summary .dirinfo').hide();
 				$('.summary .connector').hide();
