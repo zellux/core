@@ -28,8 +28,8 @@ class JobList {
 				$class = $job;
 			}
 			$argument = json_encode($argument);
-			$query = \OC_DB::prepare('INSERT INTO `*PREFIX*jobs`(`class`, `argument`, `last_run`) VALUES(?, ?, 0)');
-			$query->execute(array($class, $argument));
+			$sql = 'INSERT INTO `*PREFIX*jobs`(`class`, `argument`, `last_run`) VALUES(?, ?, 0)';
+			\OC_DB::executeAudited($sql, array($class, $argument));
 		}
 	}
 
@@ -45,11 +45,11 @@ class JobList {
 		}
 		if (!is_null($argument)) {
 			$argument = json_encode($argument);
-			$query = \OC_DB::prepare('DELETE FROM `*PREFIX*jobs` WHERE `class` = ? AND `argument` = ?');
-			$query->execute(array($class, $argument));
+			$sql = 'DELETE FROM `*PREFIX*jobs` WHERE `class` = ? AND `argument` = ?';
+			\OC_DB::executeAudited($sql, array($class, $argument));
 		} else {
-			$query = \OC_DB::prepare('DELETE FROM `*PREFIX*jobs` WHERE `class` = ?');
-			$query->execute(array($class));
+			$sql = 'DELETE FROM `*PREFIX*jobs` WHERE `class` = ?';
+			\OC_DB::executeAudited($sql, array($class));
 		}
 	}
 
@@ -67,8 +67,8 @@ class JobList {
 			$class = $job;
 		}
 		$argument = json_encode($argument);
-		$query = \OC_DB::prepare('SELECT `id` FROM `*PREFIX*jobs` WHERE `class` = ? AND `argument` = ?');
-		$result = $query->execute(array($class, $argument));
+		$sql = 'SELECT `id` FROM `*PREFIX*jobs` WHERE `class` = ? AND `argument` = ?';
+		$result = \OC_DB::executeAudited($sql, array($class, $argument));
 		return (bool)$result->fetchRow();
 	}
 
@@ -78,8 +78,8 @@ class JobList {
 	 * @return Job[]
 	 */
 	public function getAll() {
-		$query = \OC_DB::prepare('SELECT `id`, `class`, `last_run`, `argument` FROM `*PREFIX*jobs`');
-		$result = $query->execute();
+		$sql = 'SELECT `id`, `class`, `last_run`, `argument` FROM `*PREFIX*jobs`';
+		$result = \OC_DB::executeAudited($sql);
 		$jobs = array();
 		while ($row = $result->fetchRow()) {
 			$jobs[] = $this->buildJob($row);
@@ -95,13 +95,13 @@ class JobList {
 	public function getNext() {
 		$lastId = $this->getLastJob();
 		$query = \OC_DB::prepare('SELECT `id`, `class`, `last_run`, `argument` FROM `*PREFIX*jobs` WHERE `id` > ? ORDER BY `id` ASC', 1);
-		$result = $query->execute(array($lastId));
+		$result = \OC_DB::executeAudited($query, array($lastId));
 		if ($row = $result->fetchRow()) {
 			return $this->buildJob($row);
 		} else {
 			//begin at the start of the queue
 			$query = \OC_DB::prepare('SELECT `id`, `class`, `last_run`, `argument` FROM `*PREFIX*jobs` ORDER BY `id` ASC', 1);
-			$result = $query->execute();
+			$result = \OC_DB::executeAudited($query);
 			if ($row = $result->fetchRow()) {
 				return $this->buildJob($row);
 			} else {
@@ -115,8 +115,8 @@ class JobList {
 	 * @return Job
 	 */
 	public function getById($id) {
-		$query = \OC_DB::prepare('SELECT `id`, `class`, `last_run`, `argument` FROM `*PREFIX*jobs` WHERE `id` = ?');
-		$result = $query->execute(array($id));
+		$sql = 'SELECT `id`, `class`, `last_run`, `argument` FROM `*PREFIX*jobs` WHERE `id` = ?';
+		$result = \OC_DB::executeAudited($sql, array($id));
 		if ($row = $result->fetchRow()) {
 			return $this->buildJob($row);
 		} else {
@@ -166,7 +166,7 @@ class JobList {
 	 * @param Job $job
 	 */
 	public function setLastRun($job) {
-		$query = \OC_DB::prepare('UPDATE `*PREFIX*jobs` SET `last_run` = ? WHERE `id` = ?');
-		$query->execute(array(time(), $job->getId()));
+		$sql = 'UPDATE `*PREFIX*jobs` SET `last_run` = ? WHERE `id` = ?';
+		\OC_DB::executeAudited($sql, array(time(), $job->getId()));
 	}
 }
